@@ -1,5 +1,5 @@
 FROM php:8.4-fpm-alpine AS base
-RUN apk add --no-cache icu-libs libzip oniguruma nginx supervisor && apk add --no-cache --virtual .build-deps $PHPIZE_DEPS icu-dev libzip-dev oniguruma-dev && docker-php-ext-install pdo_mysql intl zip opcache mbstring && apk del .build-deps
+RUN apk add --no-cache icu-libs libzip libpq oniguruma nginx supervisor && apk add --no-cache --virtual .build-deps $PHPIZE_DEPS icu-dev libzip-dev oniguruma-dev postgresql-dev && docker-php-ext-install pdo_pgsql pdo_mysql intl zip opcache mbstring && apk del .build-deps
 WORKDIR /app
 FROM base AS deps
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer

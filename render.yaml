@@ -1,0 +1,55 @@
+services:
+  - type: web
+    name: saffron-sage-restaurant-demo
+    runtime: docker
+    plan: free
+    region: virginia
+    branch: main
+    dockerfilePath: ./deploy/render.Dockerfile
+    dockerContext: .
+    healthCheckPath: /up
+    envVars:
+      - key: PORT
+        value: "8080"
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_KEY_BASE64
+        generateValue: true
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        value: "5432"
+      - key: DB_DATABASE
+        value: postgres
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_SSLMODE
+        value: require
+      - key: DB_SCHEMA
+        value: restaurant
+      - key: CACHE_STORE
+        value: database
+      - key: SESSION_DRIVER
+        value: database
+      - key: QUEUE_CONNECTION
+        value: database
+      - key: RESTAURANT_DEMO_MODE
+        value: "true"
+      - key: STAFF_EMAIL
+        value: demo@saffron.test
+      - key: STAFF_PASSWORD
+        value: TrySaffron2026!
+      - key: RESTAURANT_WIFI_NAME
+        value: Saffron Demo Guest
+      - key: RESTAURANT_WIFI_PASSWORD
+        value: sample-wifi-only
+      - key: RESTAURANT_BANK_INSTRUCTIONS
+        value: "Demo only. Do not send money. Ask staff to simulate payment confirmation."

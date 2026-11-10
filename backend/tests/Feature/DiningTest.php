@@ -43,6 +43,20 @@ class DiningTest extends TestCase
             ->assertJsonPath('guest_path', '/menu/'.$table->qr_token);
     }
 
+    public function test_demo_fixtures_use_menu_identity_and_survive_restarts(): void
+    {
+        config(['restaurant.demo_mode' => true, 'restaurant.staff_password' => 'TestPassword!123']);
+        // Imported/previously used databases do not necessarily start menu IDs at one.
+        $placeholder = MenuItem::create(['id' => 1000, 'name' => 'Placeholder', 'category' => 'Drinks', 'description' => 'Test', 'price' => 100, 'allergens' => [], 'spice' => 0, 'image' => '', 'available' => true]);
+        $this->seed();
+        $placeholder->delete();
+        $this->artisan('restaurant:demo')->assertSuccessful();
+        $this->assertDatabaseCount('orders', 6);
+        $this->assertDatabaseCount('order_items', 12);
+        $this->artisan('restaurant:demo')->assertSuccessful();
+        $this->assertDatabaseCount('orders', 6);
+    }
+
     public function test_reads_do_not_consume_the_order_action_limit(): void
     {
         [$t,$i,$c] = $this->menu();

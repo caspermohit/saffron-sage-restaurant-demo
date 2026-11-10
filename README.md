@@ -1,8 +1,8 @@
 # Saffron & Sage
 
-A restaurant ordering and service application built with **Next.js + TypeScript**, a **Laravel 12 + Sanctum API**, and **MySQL**.
+A restaurant ordering and service application built with **Next.js + TypeScript**, a **Laravel 12 + Sanctum API**, and **MySQL or PostgreSQL**.
 
-The shared demo is designed for testers on different devices: guests place sample orders, staff see them in the kitchen, and table requests and payments use the same MySQL database.
+The shared demo is designed for testers on different devices: guests place sample orders, staff see them in the kitchen, and table requests and payments use the same shared database.
 
 ## Public test login
 
@@ -75,11 +75,13 @@ npm run build
 NEXT_PUBLIC_SHARED_DEMO=true npm run build
 ```
 
-Laravel tests use an in-memory SQLite database by default. Do not point RefreshDatabase tests at a real database. GitHub Actions checks backend tests and both frontend build configurations.
+Laravel tests use an in-memory SQLite database by default. Do not point RefreshDatabase tests at a real database. The included GitHub Actions template checks backend tests and both frontend build configurations.
 
 ## Deployment
 
-The shared demo uses **Vercel for Next.js** and **Railway for Laravel and MySQL**. See [the deployment guide](docs/deployment.md) for environment variables, seeding and service configuration.
+The free shared demo is configured for **Render + Supabase PostgreSQL**. See [the Render/Supabase guide](docs/render-supabase.md) for deployment, private connection settings and free-plan limits. The root `render.yaml` defines one free service for Next.js and Laravel.
+
+The alternative [Vercel/Railway deployment guide](docs/deployment.md) remains available for MySQL hosting.
 
 Dockerfiles are included for both applications. [AWS deployment instructions](docs/AWS.md) are also available. Docker image builds and AWS deployment have not been verified on this development machine.
 
