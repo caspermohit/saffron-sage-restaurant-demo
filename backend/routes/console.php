@@ -47,6 +47,8 @@ Artisan::command('restaurant:prepare-database', function (): void {
     if (! is_string($schema) || ! preg_match('/^[a-z_][a-z0-9_]*$/', $schema)) {
         throw new RuntimeException('DB_SCHEMA must be a single lowercase PostgreSQL schema name.');
     }
-    DB::statement('CREATE SCHEMA IF NOT EXISTS "'.$schema.'"');
+    if (! DB::selectOne('SELECT 1 FROM information_schema.schemata WHERE schema_name = ?', [$schema])) {
+        DB::statement('CREATE SCHEMA IF NOT EXISTS "'.$schema.'"');
+    }
     $this->info('Application database schema is ready.');
 })->purpose('Create the dedicated PostgreSQL schema before the first migration');
