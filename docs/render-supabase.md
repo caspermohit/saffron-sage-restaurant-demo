@@ -34,4 +34,4 @@ Official references: [Render free services](https://render.com/docs/free), [Rend
 
 ## Validation
 
-The backend feature suite passes against both SQLite and an isolated local PostgreSQL database (17 tests, 89 assertions each). The Blueprint validates against Render's published JSON schema. Sample fixtures were seeded twice on PostgreSQL to confirm repeat startup preserves orders. The Docker image still needs its first Render build; Docker is not installed on the development machine.
+The backend feature suite passes against both SQLite and an isolated local PostgreSQL database (17 tests, 89 assertions each). The Blueprint validates against Render's published JSON schema. Sample fixtures were seeded twice on PostgreSQL to confirm repeat startup preserves orders. The combined Docker image built successfully on Render. The hosted database contains the sample restaurant in its private schema. Docker is not installed on the development machine.

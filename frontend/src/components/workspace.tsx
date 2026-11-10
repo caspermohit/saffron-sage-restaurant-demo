@@ -906,9 +906,8 @@ function Login({ onLogin }: { onLogin: (token: string) => void }) {
                 Password: <code>{DEMO_PASSWORD}</code>
               </p>
               <small>
-                Each browser has its own sample restaurant. Open guest ordering
-                in another tab of this browser to see updates in the staff
-                workspace.
+                This is a shared sample restaurant. Open guest ordering in another
+                tab or device to see updates in the staff workspace.
               </small>
             </div>
           )}

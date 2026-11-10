@@ -4,6 +4,8 @@ A restaurant ordering and service application built with **Next.js + TypeScript*
 
 The shared demo is designed for testers on different devices: guests place sample orders, staff see them in the kitchen, and table requests and payments use the same shared database.
 
+[**Open the live demo**](https://saffron-sage-restaurant-demo-hb43.onrender.com/) — hosted on Render Free with Supabase PostgreSQL. It may take about a minute to wake after inactivity.
+
 ## Public test login
 
 - **Email:** `demo@saffron.test`
