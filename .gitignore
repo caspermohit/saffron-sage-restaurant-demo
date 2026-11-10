@@ -1,0 +1,25 @@
+.local/
+.env
+.env.*
+!.env.example
+.DS_Store
+node_modules/
+vendor/
+.next/
+coverage/
+
+# Local databases, generated media and deployment state
+.vercel/
+*.sqlite
+*.sqlite-*
+*.sql
+*.mp4
+*.m4a
+*.mp3
+*.wav
+*.aiff
+docs/demo/
+docs/reference/
+*.tsbuildinfo
+!**/.env.demo.example
+.railway/
